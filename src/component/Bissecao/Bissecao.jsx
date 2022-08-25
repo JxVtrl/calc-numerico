@@ -1,0 +1,93 @@
+import { Flex } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { useApp } from "../../context";
+
+export function Bissecao() {
+  const [element, setElement] = useState(undefined);
+  const { inputValues } = useApp();
+
+  function Log10(x) {
+    return Math.log(x) / Math.log(10);
+  }
+
+  function f(x) {
+    return Math.pow(x, 2) - 4;
+  }
+
+  const createSolution = (a0, b0, eT) => {
+    let sizeInterval = b0 - a0,
+      pm,
+      it,
+      bolzano = f(a0) * f(b0) < 0 ? 1 : 0;
+
+    if (!bolzano) {
+      setElement(
+        <Flex justify='center'>
+          Intervalo não satisfaz as condições do teorema de bolzano, entre com
+          outro intervalo!
+        </Flex>
+      );
+    } else {
+      it = Log10(b0 - a0);
+      it -= Log10(eT);
+      it /= Math.log(2);
+
+      setElement(
+        <Flex mt='20px' fontWeight='bold' align='center' flexDir="column">
+          <p>Serão necessárias {Math.ceil(it)} iterações!</p>
+        </Flex>
+      );
+
+      if (f(a0) == 0 || f(b0) == 0) {
+       return setElement(
+          <Flex align='center' flexDir="column">
+            {element}
+            <p>O valor, {f(a0) == 0 ? a0 : b0} é a raiz da função</p>
+          </Flex>
+        );
+      } else {
+        while (sizeInterval > eT) {
+          pm = (a0 + b0) / 2;
+          if (f(pm) == 0) {
+            return setElement(
+              <Flex align='center' flexDir="column">
+                {element}
+                <p>A solucao exata encontrada é: {pm}</p>
+              </Flex>
+            );
+          }
+
+          if (f(a0) * f(pm) < 0) {
+            b0 = pm;
+          } else {
+            a0 = pm;
+          }
+
+          setElement(
+            <Flex flexDir="column">
+              {element}
+              <p>Intervalo final: [a0-b0]: {a0 - b0}</p>
+              <p>Solução aproximada: {pm}</p>
+            </Flex>
+          );
+
+          sizeInterval = b0 - a0
+          
+        } 
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (inputValues[0]?.value && inputValues[1]?.value) {
+      setElement(undefined);
+      createSolution(
+        inputValues[1].value.split("-")[0],
+        inputValues[1].value.split("-")[1],
+        inputValues[0].value
+      );
+    }
+  }, [inputValues]);
+
+  return <>{element}</>;
+}

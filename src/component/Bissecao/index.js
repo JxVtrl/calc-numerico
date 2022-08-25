@@ -1,0 +1,1 @@
+export { Bissecao } from './Bissecao'
