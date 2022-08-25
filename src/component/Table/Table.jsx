@@ -41,8 +41,8 @@ export function Table({ values, setValues }) {
         <TableCaption>Interpolação de Lagrange - Polinômio de Lagrange</TableCaption>
         <Thead>
           <Tr>
-            <Th>X</Th>
-            <Th>Y</Th>
+            <Th textAlign='center'>X</Th>
+            <Th textAlign='center'>Y</Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -52,6 +52,7 @@ export function Table({ values, setValues }) {
                 <Tr key={idx}>
                   <Td>
                     <Input
+                      textAlign='center'
                       placeholder={"x" + item.id}
                       value={values[item.id]?.x}
                       onChange={(e) => handleChange(e.target.value, item.id, "x")}
@@ -59,6 +60,7 @@ export function Table({ values, setValues }) {
                   </Td>
                   <Td>
                     <Input
+                      textAlign='center'
                       placeholder={"y" + item.id}
                       value={values[item.id]?.y}
                       onChange={(e) => handleChange(e.target.value, item.id, "y")}

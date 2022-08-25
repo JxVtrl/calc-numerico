@@ -15,7 +15,7 @@
                     "type": "text"
                 }
             ],
-            "description": "O método da bisseção consiste em encontrar uma aproximação real de uma raiz e utiliza do teorema de bolzano para sua execução. Esse teorema consiste em verificar se a multiplicação de dois valores jogados dentro de muma função tem como retorno um número negativo, caso seja realmente negativo, é sinal que existe pelo menos uma raíz real dentro daquele intervalo, caso contrário não há uma raíz dentro do intervalo estipulado. É importante ressaltarmos que é necessário que a função analisada seja contínua dentro desse mesmo intervalo analisado, e que existe um erro de truncamento fornecido, para que não um desvio absoluto ou um desvio relativo percentual muito grande. Após analisado o teorema de bolzano, verificamos o ponto médio, somando os dois valores e fazendo a divisão por 2, e caso de primeira o valor que for retornada seja 0, chegamos a conclusão que aquele valor é a raiz do intervalo, caso contrário, repetiremos esse processo, até que a subtração dos intervalo [b-a] seja menor que o erro de truncamento, sendo necessária algumas iterações durante esse processo, abaixo mostraremos um exemplo e em seguida daremos como funciona esse método na prática para vocês."
+            "description": "O método da bissecção é inteiramente baseado no Teorema do Valor Intermediário, ele garante a existência de uma solução para f(x) = 0 no intervalo (a, b) desde que f : [a, b] → R seja contínua e satisfaz f(a) * f(b) < 0. "
         },
         {
             "id": 1,
@@ -55,8 +55,8 @@
                 },
                 {
                     "id": 3,
-                    "x": "2.6",
-                    "y": "0.5"
+                    "x": "3.9",
+                    "y": "-1.7"
                 }
             ],
             "description": "O método de Lagrange, um método de interpolação, encontrando um polinômio que passa por todos os pontos, e a maneira de calcular é um pouco complexa, mas nada de outro mundo. Utilizamos a fórmula: f(x) = L(0)*f(x0) + L(1) * f(x1) + L(2) * f(x2)..., e assim sucessivamente, até N-1 do polinômio pedido, caso o polinômio que estivesse sendo interpolado fosse do grau 3, teria L(3) = L(0) * f(x0) + L(1) * f(x1) + L(2) * f(x2). Em que o problema todo, consiste em acharmos os valores de L(n), pois os outros valores já são dados, e esses L são calculados da seguinte forma: Caso tivessem x0, x1 e x2, o L(0) é: (x - x1) * (x - x2) / (x0 - x1) * (x0 - x2), onde no denomidador, inicia-se com o próprio (Xn) subtraindo pelos valores que não são ele mesmo, para que não haja problema de zerar o denominador e causar uma indeterminação matemática, e no numerador é (X - (os valores repetidos do denomidador do lado direito do sinal de subtração)), e assim será feito para achar o L(0), O L(1) e o L(2). Achando esses valores basta substituir todos os valores em seus devidos lugares dentro da equação. Não havendo o erro de conta, chegaremos ao polinômio interpolador de Lagrange. Em seguida mostraremos esse método na prática para vocês."

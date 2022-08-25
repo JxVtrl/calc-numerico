@@ -11,13 +11,14 @@ export function Bissecao() {
   }
 
   function f(x) {
-    return Math.pow(x, 2) - 4;
+    return Math.pow(x, 3) - 4;
   }
 
   const createSolution = (a0, b0, eT) => {
     let sizeInterval = b0 - a0,
       pm,
       it,
+      temp = [a0, b0],
       bolzano = f(a0) * f(b0) < 0 ? 1 : 0;
 
     if (!bolzano) {
@@ -27,65 +28,63 @@ export function Bissecao() {
           outro intervalo!
         </Flex>
       );
+      return
     } else {
       it = Log10(b0 - a0);
       it -= Log10(eT);
       it /= Math.log(2);
 
-      setElement(
-        <Flex mt='20px' fontWeight='bold' align='center' flexDir="column">
-          <p>Serão necessárias {Math.ceil(it)} iterações!</p>
-        </Flex>
-      );
-
       if (f(a0) == 0 || f(b0) == 0) {
-       return setElement(
+        return setElement(
           <Flex align='center' flexDir="column">
-            {element}
             <p>O valor, {f(a0) == 0 ? a0 : b0} é a raiz da função</p>
           </Flex>
         );
-      } else {
-        while (sizeInterval > eT) {
-          pm = (a0 + b0) / 2;
-          if (f(pm) == 0) {
-            return setElement(
-              <Flex align='center' flexDir="column">
-                {element}
-                <p>A solucao exata encontrada é: {pm}</p>
-              </Flex>
-            );
-          }
+      }
 
-          if (f(a0) * f(pm) < 0) {
-            b0 = pm;
-          } else {
-            a0 = pm;
-          }
+      while (sizeInterval > eT) {
+        sizeInterval = b0 - a0;
+        pm = (a0 + b0) / 2;
 
+        if (f(pm) == 0) {
           setElement(
-            <Flex flexDir="column">
+            <Flex align='center' flexDir="column">
               {element}
-              <p>Intervalo final: [a0-b0]: {a0 - b0}</p>
-              <p>Solução aproximada: {pm}</p>
+              <p>A solucao exata encontrada é: {pm}</p>
+              
             </Flex>
           );
-
-          sizeInterval = b0 - a0
-          
-        } 
+          return
+        }
+        
+        if (f(a0) * f(pm) < 0 ) {
+            b0 = pm;
+        }
+        else {
+            a0 = pm;
+        }
       }
-    }
-  };
+        
+      setElement(
+        <Flex align="center" flexDir='column'>
+          <p>Serão necessárias {Math.ceil(it)} iterações!</p>
+          <p>Intervalo Inicial: [{temp[0]}-{temp[1]}]</p>
+          <p>Intervalo final: [{a0.toFixed(5)}-{b0.toFixed(5)}]</p>
+          <p>Solução aproximada: {((a0+b0)/2).toFixed(5)}</p>
+        </Flex>
+      );     
+    };
+  }
 
   useEffect(() => {
     if (inputValues[0]?.value && inputValues[1]?.value) {
       setElement(undefined);
-      createSolution(
-        inputValues[1].value.split("-")[0],
-        inputValues[1].value.split("-")[1],
-        inputValues[0].value
-      );
+      if(inputValues[1])
+        createSolution(
+          Number(inputValues[1].value.split("-")[0]),
+          Number(inputValues[1].value.split("-")[1]),
+          Number(inputValues[0].value)
+        );
     }
   }, [inputValues]);
 
