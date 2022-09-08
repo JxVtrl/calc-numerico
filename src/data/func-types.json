@@ -43,11 +43,11 @@
                 },
                 {
                     "id": 3,
-                    "name": "Valor de X",
+                    "name": "Valor de X0",
                     "type": "number"
                 }
             ],
-            "description": "O método de Newton-Raphson é um dos métodos mais eficientes para a solução numérica de f(x) = 0. Como veremos, esse método possui ordem de convergência 2. Onde o algoritmo é dado por Xn+1 = Xn - f(Xn) / f'(Xn) e o critério de parada se dá por |Xn+1 - Xn| <= Erro de truncamento"
+            "description": "O método de Newton-Raphson tem o objetivo de estimar as raízes de uma função, e é um dos métodos mais eficientes para a solução numérica de f(x) = 0. Escolhe-se uma aproximação inicial para esta. Como veremos, esse método possui ordem de convergência 2. Onde o algoritmo é dado por Xn+1 = Xn - f(Xn) / f'(Xn) e o critério de parada se dá por |Xn+1 - Xn| <= Erro de truncamento"
         },
         {
             "id": 2,
