@@ -50,11 +50,10 @@ export function Bissecao() {
           setElement(
             <Flex align='center' flexDir="column">
               {element}
-              <p>A solucao exata encontrada é: {pm}</p>
-              
+              <p>A solucao exata encontrada é: {pm}</p> 
             </Flex>
           );
-          break;
+          return;
         }
         
         if (f(a0) * f(pm) < 0 ) {

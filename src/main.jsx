@@ -21,8 +21,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               src={`https://upload.wikimedia.org/wikipedia/pt/e/e2/Logo_uerj_cor.gif`}
             />
           </Flex>
+          <Footer/>
         </Flex>
-        <Footer/>
       </ChakraProvider>
     </AppProvider>
   </React.StrictMode>

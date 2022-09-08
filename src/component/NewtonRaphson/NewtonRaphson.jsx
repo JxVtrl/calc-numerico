@@ -44,7 +44,7 @@ export const NewtonRaphson = () => {
       <Text>
         Considerando que a função seja:{" "}
         <b>
-          Ax<sup>3</sup> + Bx<sup>2</sup>-Cx + D
+          Ax<sup>3</sup> + Bx<sup>2</sup> - Cx + D
         </b>
       </Text>
       <Flex align="center" justify="center" gap="10px" m="10px auto">
