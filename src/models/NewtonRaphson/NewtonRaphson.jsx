@@ -1,19 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Flex, PinInput, Text, PinInputField } from '@chakra-ui/react'
 import { useApp } from "../../context";
 
 
 export const NewtonRaphson = () => {
   const [element, setElement] = useState(<></>)
+  const [newtonArray, setNewtonArray] = useState([])
   const { inputValues, setNewtonValues, newtonValues } = useApp();
   
+  useEffect(() => {
+    if (
+      inputValues[0]?.value &&
+      inputValues[1]?.value &&
+      inputValues[2]?.value &&
+      inputValues[3]?.value &&
+      newtonArray[0] &&
+      newtonArray[1] &&
+      newtonArray[2] && 
+      newtonArray[3]
+    )
+      createNewton()
+    
+  },[inputValues, newtonArray])
+
   function handleChangeValues(e) {
     setNewtonValues(e)
-    if (e.length === 4) 
-      createNewton(e.split(''))
+    setNewtonArray(e.split(''))
   }
   
-  function createNewton(newtonArray) {
+  function createNewton() {
     if (newtonArray.length == 4) {
       var x0, Fxn, Fdxn, iT = 0,
           a = newtonArray[0],
