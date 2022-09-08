@@ -4,7 +4,7 @@ import { useApp } from "../../context";
 
 
 export const NewtonRaphson = () => {
-  const [element, setElement] = useState(<></>)
+  // const [element, setElement] = useState(<></>)
   const { inputValues } = useApp();
 
   useEffect(() => {
@@ -21,23 +21,26 @@ export const NewtonRaphson = () => {
     const digits = e.split('')
     console.log(digits)
   }
-
+  
   function createNewton() {
-    var element = <></>
+    var a, b, c, d, x0, xn, Fxn, Fdxn, eT, iT;
+    // var element = <></>
     
     do {
       x0 = xn;
-      Fxn = (a*( x0 * x0 * x0 )) + (b*(x0*x0) - (c*x0) + d); //Calcula a função f(x)
-      Fdxn = ((3*a)*x0*x0)+((2*b)*x0)-c; //Calcula a derivada f'(x)
-      xn = x0 - ( Fxn / Fdxn );
+      // Calculando o f(x):
+      Fxn = a * Math.pow(x0, 3) + (b * Math.pow(x0, 2) - c * x0 + d);
+      
+      //Calcula a derivada f'(x)
+      Fdxn = 3 * a * x0 * x0 + 2 * b * x0 - c;
+      xn = x0 - (Fxn / Fdxn);
       iT += 1;
-      printf( "\n Iteracao = %d", k ); //exibe a iteração atual
       //    printf( "\nx0 = %f\nxn = %f", x0, xn); //exibe os valores de x0 e xn
+    } while (Math.abs(xn-x0)>=eT||Math.abs(Fxn)>=eT)
 
-    } while (Abs(xn-x0)>=E||Abs(Fxn)>=E)
+    console.log(`Iterações = ${iT} | x0 = ${x0} | Xn = ${xn}`); //exibe a iteração atual
   }
 
-  var a, b, c, d, x0, xn, Fxn, Fdxn, eT, iT;
 
   return (
     <Flex align="center" flexDir="column" mt="10px">
@@ -59,7 +62,7 @@ export const NewtonRaphson = () => {
         </PinInput>
       </Flex>
 
-      {/* {createNewton()} */}
+       {createNewton()}
 
 
 

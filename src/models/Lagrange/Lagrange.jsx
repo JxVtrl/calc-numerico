@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Table } from '../Table'
+import { Table } from '../../component/Table'
 import { Flex, Text } from "@chakra-ui/react";
 import { useApp } from '../../context'
 import { funcTypes } from '../../data';
