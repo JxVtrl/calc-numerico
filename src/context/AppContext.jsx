@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState, useRef } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import { funcTypes } from '../data'
 
 const AppContext = createContext()
@@ -10,33 +10,59 @@ export function AppProvider({ children }) {
     const [inputValues, setInputValues] = useState([])
 
     useEffect(() => {
-        switch (funcType) {
-            case 'bissecao':
-                setFuncObj(funcTypes.types[0])
-                break
-            case 'newton':
-                setFuncObj(funcTypes.types[1])
-                break
-            case 'lagrange':
-                setFuncObj(funcTypes.types[2])
-                break
-        }
+        if(funcType)
+            switch (funcType) {
+                case 'bissecao':
+                    setFuncObj(funcTypes.types[0])
+                    break
+                case 'newton':
+                    setFuncObj(funcTypes.types[1])
+                    break
+                case 'lagrange':
+                    setFuncObj(funcTypes.types[2])
+                    break
+            }
     }, [funcType])
     
     useEffect(() => {
         if (funcObj.name) {
-            setInputValues([
-                {
-                    "id": 0,
-                    "name": funcObj.input[0]?.name,
-                    "value": undefined
-                },
-                {
-                    "id": 1,
-                    "name": funcObj.input[1]?.name,
-                    "value": undefined
-                }
-            ])
+            if (funcObj.name == 'bissecao') {
+                setInputValues([
+                    {
+                        "id": 0,
+                        "name": funcObj.input[0]?.name,
+                        "value": undefined
+                    },
+                    {
+                        "id": 1,
+                        "name": funcObj.input[1]?.name,
+                        "value": undefined
+                    }
+                ])
+            } else {
+                setInputValues([
+                    {
+                        "id": 0,
+                        "name": funcObj.input[0]?.name,
+                        "value": undefined
+                    },
+                    {
+                        "id": 1,
+                        "name": funcObj.input[1]?.name,
+                        "value": undefined
+                    },
+                    {
+                        "id": 2,
+                        "name": funcObj.input[2]?.name,
+                        "value": undefined
+                    },
+                    {
+                        "id": 3,
+                        "name": funcObj.input[3]?.name,
+                        "value": undefined
+                    }
+                ])
+            }
         }
     }, [funcObj])
 

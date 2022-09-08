@@ -1,0 +1,1 @@
+export { NewtonRaphson } from './NewtonRaphson'

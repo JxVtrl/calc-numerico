@@ -1,38 +1,71 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Select, Flex, Input } from "@chakra-ui/react";
 import { useApp } from "../../context";
-import { formatInterval } from "../../helpers/formatInterval";
-import { Lagrange } from "../Lagrange/Lagrange";
+import { Lagrange, NewtonRaphson, Bissecao } from "..";
 
 export function Form() {
-  const [selected, setSelected] = useState(false);
-  const { setFuncType, setShowModal, funcObj, inputValues, setInputValues } =
-    useApp();
+  const {
+    setFuncType,
+    setShowModal,
+    funcObj,
+    inputValues,
+    setInputValues,
+    funcType
+  } = useApp();
 
   const handleSelect = (e) => {
     if (e.target.value) {
       setFuncType(e.target.value);
       setShowModal(true);
-      setSelected(true);
     } else {
       setFuncType(undefined);
-      setSelected(false);
       setShowModal(false);
     }
   };
 
   const handleValue = (e, item) => {
-    switch (item.id) {
-      case 0:
-        inputValues[0].value = e.target.value;
-        setInputValues([inputValues[0], inputValues[1]]);
+    if (funcType == 'bissecao') {
+      switch (item.id) {
+        case 0:
+          inputValues[0].value = e.target.value;
+          setInputValues([inputValues[0], inputValues[1], inputValues[2]]);
+          break;
+        case 1:
+          inputValues[1].value = e.target.value;
+          setInputValues([inputValues[0], inputValues[1], inputValues[2]]);
+          break;
+        case 2:
+          inputValues[2].value = e.target.value;
+          setInputValues([inputValues[0], inputValues[1], inputValues[2]]);
+          break;
+        case 3:
+          inputValues[3].value = e.target.value;
+          setInputValues([inputValues[0], inputValues[1], inputValues[2]]);
         break;
-      case 1:
-        inputValues[1].value = formatInterval(e.target.value);
-        setInputValues([inputValues[0], inputValues[1]]);
+        default:
         break;
-      default:
+      }
+    } else {
+      switch (item.id) {
+        case 0:
+          inputValues[0].value = e.target.value;
+          setInputValues([inputValues[0], inputValues[1], inputValues[2], inputValues[3]]);
+          break;
+        case 1:
+          inputValues[1].value = e.target.value;
+          setInputValues([inputValues[0], inputValues[1], inputValues[2], inputValues[3]]);
+          break;
+        case 2:
+          inputValues[2].value = e.target.value;
+          setInputValues([inputValues[0], inputValues[1], inputValues[2], inputValues[3]]);
+          break;
+        case 3:
+          inputValues[3].value = e.target.value;
+          setInputValues([inputValues[0], inputValues[1], inputValues[2], inputValues[3]]);
         break;
+        default:
+        break;
+      }
     }
   };
 
@@ -48,16 +81,68 @@ export function Form() {
         <option value="lagrange">LaGrange</option>
       </Select>
       <Flex flexDir="column" gap="10px">
-        {selected && funcObj.name !== 'lagrange' ?
-          funcObj.input?.map((item, index) => (
+        {funcType == 'bissecao' && funcObj.input && (
+          <>
             <Input
-              key={index}
-              placeholder={item.name}
-              onChange={(e) => handleValue(e, item)}
-              type={item.type}
-              value={inputValues[index]?.value}
+              placeholder={funcObj.input[0]?.name || ''}
+              onChange={(e) => handleValue(e, funcObj.input[0])}
+              type={funcObj.input[0].type}
+              value={inputValues[0]?.value}
             />
-          )) : funcObj.name == 'lagrange' && <Lagrange />}
+            <Flex gap='15px'>
+              <Input
+                placeholder={funcObj.input[1]?.name || ''}
+                onChange={(e) => handleValue(e, funcObj.input[1])}
+                type={funcObj.input[1].type}
+                value={inputValues[1]?.value}
+                maxLength='6'
+              />
+              <Input
+                placeholder={funcObj.input[2]?.name || ''}
+                onChange={(e) => handleValue(e, funcObj.input[2])}
+                type={funcObj.input[2].type}
+                value={inputValues[2]?.value}
+                maxLength='6'
+              />
+            </Flex>
+          <Bissecao />
+          </>
+        )}
+        {funcType == 'newton' && funcObj.input && (
+          <>
+            <Input
+              placeholder={funcObj.input[0]?.name || ''}
+              onChange={(e) => handleValue(e, funcObj.input[0])}
+              type={funcObj.input[0].type}
+              value={inputValues[0]?.value}
+            />
+            <Flex gap='15px'>
+              <Input
+                placeholder={funcObj.input[1]?.name || ''}
+                onChange={(e) => handleValue(e, funcObj.input[1])}
+                type={funcObj.input[1].type}
+                value={inputValues[1]?.value}
+                maxLength='6'
+              />
+              <Input
+                placeholder={funcObj.input[2]?.name || ''}
+                onChange={(e) => handleValue(e, funcObj.input[2])}
+                type={funcObj.input[2].type}
+                value={inputValues[2]?.value}
+                maxLength='6'
+              />
+              <Input
+                placeholder={funcObj.input[3]?.name || ''}
+                onChange={(e) => handleValue(e, funcObj.input[3])}
+                type={funcObj.input[3].type}
+                value={inputValues[3]?.value}
+                maxLength='6'
+              />
+            </Flex>
+            <NewtonRaphson />
+          </>
+        )}
+        {funcType == 'lagrange' && <Lagrange />}
       </Flex>
     </Flex>
   );

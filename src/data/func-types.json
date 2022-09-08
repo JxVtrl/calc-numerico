@@ -11,7 +11,12 @@
                 },
                 {
                     "id": 1,
-                    "name": "Intervalo Ex. a-b",
+                    "name": "Primeiro valor do intervalo",
+                    "type": "text"
+                },
+                {
+                    "id": 2,
+                    "name": "Segundo valor do intervalo",
                     "type": "text"
                 }
             ],
@@ -24,15 +29,25 @@
                 {
                     "id": 0,
                     "name": "Erro de truncamento",
-                    "type": ""
+                    "type": "number"
                 },
                 {
                     "id": 1,
-                    "name": "Intervalo",
-                    "type": ""
+                    "name": "Intervalo a",
+                    "type": "number"
+                },
+                {
+                    "id": 2,
+                    "name": "Intervalo b",
+                    "type": "number"
+                },
+                {
+                    "id": 3,
+                    "name": "Valor de X",
+                    "type": "number"
                 }
             ],
-            "description": "O método no Newton Raphson também é utilizado para calcular o zero de funções reais de uma variável real"
+            "description": "O método de Newton-Raphson é um dos métodos mais eficientes para a solução numérica de f(x) = 0. Como veremos, esse método possui ordem de convergência 2. Onde o algoritmo é dado por Xn+1 = Xn - f(Xn) / f'(Xn) e o critério de parada se dá por |Xn+1 - Xn| <= Erro de truncamento"
         },
         {
             "id": 2,

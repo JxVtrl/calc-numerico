@@ -19,7 +19,7 @@ export function Bissecao() {
       pm,
       it,
       temp = [a0, b0],
-      bolzano = f(a0) * f(b0) < 0 ? 1 : 0;
+      bolzano = f(a0) * f(b0) < 0;
 
     if (!bolzano) {
       setElement(
@@ -77,12 +77,12 @@ export function Bissecao() {
   }
 
   useEffect(() => {
-    if (inputValues[0]?.value && inputValues[1]?.value) {
+    if (inputValues[0]?.value && inputValues[1]?.value && inputValues[2]?.value) {
       setElement(undefined);
-      if(inputValues[1])
+      if(inputValues[1] && inputValues[2])
         createSolution(
-          Number(inputValues[1].value.split("-")[0]),
-          Number(inputValues[1].value.split("-")[1]),
+          Number(inputValues[1].value),
+          Number(inputValues[2].value),
           Number(inputValues[0].value)
         );
     }

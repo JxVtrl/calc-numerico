@@ -14,11 +14,12 @@ import {
 export function Table({ values, setValues }) {  
   
   useEffect(() => {
-    values.map((item, idx) => {
-      if (item.id !== idx) {
-        values.splice(idx, 1)
-      }
-    })
+    if(values)
+      values.map((item, idx) => {
+        if (item.id !== idx) {
+          values.splice(idx, 1)
+        }
+      })
   },[values])
 
   const handleChange = (num, idx, type) => {
@@ -46,7 +47,7 @@ export function Table({ values, setValues }) {
           </Tr>
         </Thead>
         <Tbody>
-          {values.map((item, idx) => {
+          {values?.map((item, idx) => {
             if (item.id === idx) {
               return (
                 <Tr key={idx}>

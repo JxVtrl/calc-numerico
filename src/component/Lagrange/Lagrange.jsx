@@ -2,31 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { Table } from '../Table'
 import { Flex, Text } from "@chakra-ui/react";
 import { useApp } from '../../context'
+import { funcTypes } from '../../data';
 
 export const Lagrange = () => {
-    const [element, setElement] = useState(<></>)
-    const { funcObj } = useApp()
-     const [calculos, setCalculos] = useState([])
-    const [values, setValues] = useState(funcObj.input)
+    const [calculos, setCalculos] = useState([])
+    const [values, setValues] = useState(funcTypes.types[2].input)
 
     const createLn = () => {
         let array = []
         if(values)
             for (let i = 0; i < values.length; i++) {
-                let numerador = 0
-                let denominador = 0
                 let calculoN = ''
                 let calculoD = ''
 
                 for (let j = 0; j < values.length; j++){
                     if (j == 0) {
                         if (i !== j) {
-                            // numerador = Number(values[i].x) - Number(values[j].x)
                             calculoN = `(x-${values[j].x})`                        
                         }
                     } else {
                         if (i !== j){
-                            // numerador *= (Number(values[i].x) - Number(values[j].x))
                             calculoN += `(x-${values[j].x})`                        
                         }
                     }
@@ -35,13 +30,16 @@ export const Lagrange = () => {
                 for (let j = 0; j < values.length; j++){
                     if (j == 0) {
                         if(i !== j) {
-                            // denominador = Number(values[i].x) - Number(values[j].x)
                             calculoD = `(${values[i].x}-${values[j].x})`                        
                         }
                     } else {
                         if (i !== j) {
-                            // denominador *= Number(values[i].x) - Number(values[j].x)
-                            calculoD += `(${values[i].x}-${values[j].x})`                        
+                            if (j == 1 && i == 0 ) {
+                                calculoD += `(${values[i].x}-${values[j].x})`
+                            } else {
+                                calculoD += `*(${values[i].x}-${values[j].x})`
+
+                            }
                         }
                     }
                 }
@@ -83,9 +81,9 @@ export const Lagrange = () => {
                 <Text mt='30px' align='center'>
                     P<sub>{calculos.length}</sub>(x) = {calculos.map((item, idx) => {
                         return (
-                            <>
-                                <br />{values[idx].y} {''}*({item[0] + '/' + item[1]}){'  +'}
-                            </>
+                            <Flex key={idx}>
+                                <br />{values[idx].y} {''}*({item[0] + '/' + eval(item[1]).toFixed(5)}){'  +'}
+                            </Flex>
                         )
                     })}
                 </Text>
