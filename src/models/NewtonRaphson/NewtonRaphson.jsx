@@ -18,7 +18,7 @@ export const NewtonRaphson = () => {
   }
   
   function createNewton() {
-    var a, b, c, d, x0, xn, Fxn, Fdxn, eT, iT;
+    var a, b, c, d, x0, xn, Fxn, Fdxn, eT, iT = 0;
     // var element = <></>
     
     do {
@@ -27,7 +27,7 @@ export const NewtonRaphson = () => {
       Fxn = a * Math.pow(x0, 3) + (b * Math.pow(x0, 2) - c * x0 + d);
       
       //Calcula a derivada f'(x)
-      Fdxn = 3 * a * x0 * x0 + 2 * b * x0 - c;
+      Fdxn = 3 * a * Math.pow(x0, 2) + 2 * b * x0 - c;
       xn = x0 - (Fxn / Fdxn);
       iT += 1;
       //    printf( "\nx0 = %f\nxn = %f", x0, xn); //exibe os valores de x0 e xn

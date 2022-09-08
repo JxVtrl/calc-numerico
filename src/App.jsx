@@ -9,12 +9,20 @@ export default function App() {
         w="100%"
         flexDir='column'
         pos='relative'
+        h='100%'
       >
-        <Header/>
-        <Main />
-        <Modal />
-        <Footer/>
         <Logo />
+        <Modal />
+      <Header />
+      <Flex
+        w='100%'
+        h='100%'
+        flexDir='column'
+        justify='space-between'
+      >
+        <Main />
+        <Footer/>
+      </Flex>
     </Flex>
   )
 }

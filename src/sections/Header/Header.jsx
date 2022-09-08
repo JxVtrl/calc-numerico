@@ -15,6 +15,7 @@ export function Header() {
       w="100%"
       px="30px"
       textAlign='center'
+      flexShrink='0'
     >
       <Flex flexDir="column" fontSize="20px" w='215px'>
         <Text fontWeight="bold">CÁLCULO NUMÉRICO</Text>
