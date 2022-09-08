@@ -17,7 +17,7 @@ export function Modal() {
     return (
         <ModalContainer isOpen={showModal} onOverlayClick={() => setShowModal(false)}>
             <ModalOverlay/>
-            <ModalContent>
+            <ModalContent placeSelf='center'>
                 <ModalHeader>{funcObj?.name}</ModalHeader>
                 <ModalCloseButton onClick={() => setShowModal(false)}/>
                 <ModalBody>

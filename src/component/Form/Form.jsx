@@ -70,7 +70,7 @@ export function Form() {
   };
 
   return (
-    <Flex gap="15px" flexDir="column" m="0 auto" p="20px 0">
+    <Flex gap="15px" flexDir="column" m="0 auto" p="20px 0" maxWidth='900px'>
       <Select
         placeholder="Selecione o método"
         cursor="pointer"
