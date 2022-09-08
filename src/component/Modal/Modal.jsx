@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {
   Modal as ModalContainer,
   ModalOverlay,
@@ -15,7 +15,10 @@ export function Modal() {
     const { showModal, setShowModal, funcObj } = useApp()
 
     return (
-        <ModalContainer isOpen={showModal} onOverlayClick={() => setShowModal(false)}>
+        <ModalContainer
+            isOpen={showModal}
+            onOverlayClick={() => setShowModal(false)}
+        >
             <ModalOverlay/>
             <ModalContent placeSelf='center'>
                 <ModalHeader>{funcObj?.name}</ModalHeader>

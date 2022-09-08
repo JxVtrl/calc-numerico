@@ -67,6 +67,11 @@ export function AppProvider({ children }) {
         }
     }, [funcObj])
 
+    const resetValues = () => {
+        setInputValues([])
+        setNewtonValues([])
+    }
+
     const value = {
         setFuncType,
         funcType,

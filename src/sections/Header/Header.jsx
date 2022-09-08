@@ -1,6 +1,6 @@
 import React from 'react'
 import { joao_img, marcelo_img } from '../../../images'
-import { Flex, Text, AvatarGroup, Avatar, Image } from '@chakra-ui/react'
+import { Flex, Text, AvatarGroup, Avatar } from '@chakra-ui/react'
 import { useDevice } from '../../hooks'
 
 export function Header() {

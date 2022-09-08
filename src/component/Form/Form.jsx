@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Select, Flex, Input } from "@chakra-ui/react";
+import React from "react";
+import { Select } from "@chakra-ui/react";
 import { useApp } from "../../context";
-import { Lagrange, NewtonRaphson, Bissecao } from "../../models";
 
 export function Form() {
   const {
     setFuncType,
     setShowModal,
-    funcObj,
-    inputValues,
-    setInputValues,
-    funcType
+    resetValues
   } = useApp();
 
   const handleSelect = (e) => {
@@ -21,9 +17,8 @@ export function Form() {
       setFuncType(undefined);
       setShowModal(false);
     }
+    resetValues()
   };
-
-
 
   return (
     <Select

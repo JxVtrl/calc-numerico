@@ -20,7 +20,7 @@
                     "type": "number"
                 }
             ],
-            "description": "O método da bissecção é inteiramente baseado no Teorema do Valor Intermediário, ele garante a existência de uma solução para f(x) = 0 no intervalo (a, b) desde que f : [a, b] → R seja contínua e satisfaz f(a) * f(b) < 0. "
+            "description": "O método da bissecção é inteiramente baseado no Teorema do Valor Intermediário, ele garante a existência de uma solução para f(x) = 0 no intervalo (a, b) desde que f : [a, b] → R seja contínua e satisfaz f(a) * f(b) < 0."
         },
         {
             "id": 1,

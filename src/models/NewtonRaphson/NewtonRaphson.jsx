@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Flex, PinInput, Text, PinInputField } from '@chakra-ui/react'
 import { useApp } from "../../context";
 
-
 export const NewtonRaphson = () => {
   const [element, setElement] = useState(<></>)
   const [newtonArray, setNewtonArray] = useState([])
