@@ -32,8 +32,8 @@ export function Form() {
       onChange={handleSelect}
     >
       <option value="bissecao">Bisseção</option>
-      <option value="newton">Newton Raphson</option>
       <option value="lagrange">LaGrange</option>
+      <option value="newton">Newton Raphson</option>
     </Select>
   );
 }
