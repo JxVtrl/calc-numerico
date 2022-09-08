@@ -12,12 +12,12 @@
                 {
                     "id": 1,
                     "name": "Primeiro valor do intervalo",
-                    "type": "text"
+                    "type": "number"
                 },
                 {
                     "id": 2,
                     "name": "Segundo valor do intervalo",
-                    "type": "text"
+                    "type": "number"
                 }
             ],
             "description": "O método da bissecção é inteiramente baseado no Teorema do Valor Intermediário, ele garante a existência de uma solução para f(x) = 0 no intervalo (a, b) desde que f : [a, b] → R seja contínua e satisfaz f(a) * f(b) < 0. "
