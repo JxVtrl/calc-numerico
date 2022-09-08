@@ -64,7 +64,7 @@ export function Main() {
             gap="15px"
             flexDir="column"
             m="0 auto"
-            p="20px 0"
+            p="20px"
             maxWidth='900px'
         >
         <Form />

@@ -14,26 +14,35 @@ export const NewtonRaphson = () => {
   function handleChangeValues(e) {
     const digits = e.split('')
     setNewtonValues(digits)
-    console.log(`A = ${digits[0]} | B = ${digits[1]} | C = ${digits[2]} | D = ${digits[3]}`)
+    console.log(digits)
   }
   
   function createNewton() {
-    var a, b, c, d, x0, xn, Fxn, Fdxn, eT, iT = 0;
+    console.log(inputValues)
+    var a = newtonValues[0],
+        b = newtonValues[1],
+        c = newtonValues[2],
+        d = newtonValues[3],
+        eT = inputValues[0]?.value,
+        x0, xn, Fxn, Fdxn,
+        iT = 0;
     // var element = <></>
     
     do {
       x0 = xn;
       // Calculando o f(x):
       Fxn = a * Math.pow(x0, 3) + (b * Math.pow(x0, 2) - c * x0 + d);
+      console.log(Fxn)
       
       //Calcula a derivada f'(x)
       Fdxn = 3 * a * Math.pow(x0, 2) + 2 * b * x0 - c;
       xn = x0 - (Fxn / Fdxn);
       iT += 1;
-      //    printf( "\nx0 = %f\nxn = %f", x0, xn); //exibe os valores de x0 e xn
-    } while (Math.abs(xn-x0)>=eT||Math.abs(Fxn)>=eT)
+
+    } while (Math.abs(xn-x0) >= eT || Math.abs(Fxn) >= eT)
 
     console.log(`Iterações = ${iT} | x0 = ${x0} | Xn = ${xn}`); //exibe a iteração atual
+    console.log(`O resultado final é: ${xn}`)
   }
   
 
@@ -57,10 +66,7 @@ export const NewtonRaphson = () => {
       </Text>
 
 
-       {createNewton()}
-
-
-
+      {createNewton()}
     </Flex>
   );
 }
