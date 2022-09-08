@@ -4,13 +4,7 @@ import { useApp } from "../../context";
 
 
 export const NewtonRaphson = () => {
-  // const [element, setElement] = useState(<></>)
-  const { inputValues } = useApp();
-
-  useEffect(() => {
-    console.log(inputValues)
-  },[inputValues])
-  
+  const { inputValues, setNewtonValues, newtonValues } = useApp();
 
   function f(x) {
     return 2 * x - Math.sin(x) - 4;
@@ -19,7 +13,8 @@ export const NewtonRaphson = () => {
   
   function handleChangeValues(e) {
     const digits = e.split('')
-    console.log(digits)
+    setNewtonValues(digits)
+    console.log(`A = ${digits[0]} | B = ${digits[1]} | C = ${digits[2]} | D = ${digits[3]}`)
   }
   
   function createNewton() {
@@ -40,16 +35,11 @@ export const NewtonRaphson = () => {
 
     console.log(`Iterações = ${iT} | x0 = ${x0} | Xn = ${xn}`); //exibe a iteração atual
   }
+  
 
 
   return (
-    <Flex align="center" flexDir="column" mt="10px">
-      <Text>
-        Considerando que a função seja:{" "}
-        <b>
-          Ax<sup>3</sup> + Bx<sup>2</sup> - Cx + D
-        </b>
-      </Text>
+    <Flex align="center" gap='10px' flexDir="column" mt="10px">
       <Flex align="center" justify="center" gap="10px" m="10px auto">
         <PinInput onChange={handleChangeValues}>
           <PinInputField />
@@ -61,6 +51,11 @@ export const NewtonRaphson = () => {
           <PinInputField />
         </PinInput>
       </Flex>
+      <Text>
+        Considerando que a função seja:{" "}
+        {newtonValues[0]}x<sup>3</sup> + {newtonValues[1]}x<sup>2</sup> - {newtonValues[2]}x + {newtonValues[3]}
+      </Text>
+
 
        {createNewton()}
 

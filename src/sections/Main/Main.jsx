@@ -68,7 +68,7 @@ export function Main() {
             maxWidth='900px'
         >
         <Form />
-        <Flex flexDir="column" gap="10px" overflow='auto'>
+        <Flex flexDir="column" gap="10px" overflow='scroll'>
             {funcType == 'bissecao' && funcObj.input && (
             <>
                 <Input

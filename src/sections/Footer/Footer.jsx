@@ -8,7 +8,7 @@ export const Footer = () => {
         <>
         {isMobile && (
             <Flex
-                position='fixed'
+                // position='fixed'
                 bottom='0'
                 h='10vh'
                 p="10px"
@@ -19,7 +19,7 @@ export const Footer = () => {
                 flexDir={isMobile ? "column" : "row"}
                 w="100%"
                 textAlign="center"
-        >
+            >
     
             <Text>
                 João Vinícius Vitral: 202010358111

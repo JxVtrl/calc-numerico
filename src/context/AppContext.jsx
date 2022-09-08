@@ -8,6 +8,7 @@ export function AppProvider({ children }) {
     const [showModal, setShowModal] = useState(false)
     const [funcObj, setFuncObj] = useState({})
     const [inputValues, setInputValues] = useState([])
+    const [newtonValues, setNewtonValues] = useState([])
 
     useEffect(() => {
         if(funcType)
@@ -74,7 +75,9 @@ export function AppProvider({ children }) {
         setFuncObj,
         funcObj,
         inputValues,
-        setInputValues
+        setInputValues,
+        setNewtonValues,
+        newtonValues
     }
 
     return (
