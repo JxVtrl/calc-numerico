@@ -11,7 +11,7 @@ export function Bissecao() {
   }
 
   function f(x) {
-    return Math.pow(x, 2) - 4;
+    return Math.pow(x, 3) - 4;
   }
 
   const createSolution = (a0, b0, eT) => {
