@@ -20,7 +20,7 @@ export function Modal() {
             onOverlayClick={() => setShowModal(false)}
         >
             <ModalOverlay/>
-            <ModalContent placeSelf='center'>
+            <ModalContent placeSelf='center' m={5}>
                 <ModalHeader>{funcObj?.name}</ModalHeader>
                 <ModalCloseButton onClick={() => setShowModal(false)}/>
                 <ModalBody>
