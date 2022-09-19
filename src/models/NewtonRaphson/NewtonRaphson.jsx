@@ -88,7 +88,7 @@ export const NewtonRaphson = () => {
       </Flex>
       <Text>
         Considerando que a função seja:{" "}
-        {newtonValues[0]}x<sup>3</sup> + {newtonValues[1]}x<sup>2</sup> - {newtonValues[2]}x + {newtonValues[3]}
+        {newtonValues[0]}x<sup>3</sup> + {newtonValues[1]}x<sup>2</sup> - {newtonValues[2]}x {newtonValues[3] && ' + ' +newtonValues[3] }
       </Text>
 
       {newtonArray[0] &&
