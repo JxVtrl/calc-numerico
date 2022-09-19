@@ -91,18 +91,20 @@ export const NewtonRaphson = () => {
         {newtonValues[0]}x<sup>3</sup> + {newtonValues[1]}x<sup>2</sup> - {newtonValues[2]}x + {newtonValues[3]}
       </Text>
 
-      <Flex
-        flexDir='column'
-        justify='center'
-        align='center'
-        w='fit-content'
-        p='15px'
-        borderTop='1px solid black'
-        borderBottom='1px solid black'
-        mt='20px'
-      >
-        {element}
-      </Flex>
+      {element && (
+        <Flex
+          flexDir='column'
+          justify='center'
+          align='center'
+          w='fit-content'
+          p='15px'
+          borderTop='1px solid black'
+          borderBottom='1px solid black'
+          mt='20px'
+        >
+          {element}
+        </Flex>
+      )}
     </Flex>
   );
 }
