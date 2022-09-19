@@ -8,17 +8,18 @@ export const NewtonRaphson = () => {
   const { inputValues, setNewtonValues, newtonValues } = useApp();
   
   useEffect(() => {
-    if (
-      inputValues[0]?.value &&
-      inputValues[1]?.value &&
-      inputValues[2]?.value &&
-      inputValues[3]?.value &&
-      newtonArray[0] &&
+    if(newtonArray[0] &&
       newtonArray[1] &&
       newtonArray[2] && 
       newtonArray[3]
     )
-      createNewton()
+      if (
+        inputValues[0]?.value &&
+        inputValues[1]?.value &&
+        inputValues[2]?.value &&
+        inputValues[3]?.value
+      )
+        createNewton()
     
   },[inputValues, newtonArray])
 
@@ -28,41 +29,42 @@ export const NewtonRaphson = () => {
   }
   
   function createNewton() {
-    if (newtonArray.length == 4) {
-      var x0, Fxn, Fdxn, iT = 0,
-          a = newtonArray[0],
-          b = newtonArray[1],
-          c = newtonArray[2],
-          d = newtonArray[3],
-          eT = inputValues[0]?.value,
-          xn = inputValues[3]?.value
-      
-      do {
-        x0 = xn;
-        // Calculando o f(x):
-        Fxn = a * Math.pow(+x0, 3) + (+b * Math.pow(+x0, 2) - +c * +x0 + +d);
+    if(newtonArray[0] && newtonArray[1] && newtonArray[2] && newtonArray[3])
+      if (newtonArray.length == 4) {
+        var x0, Fxn, Fdxn, iT = 0,
+            a = newtonArray[0],
+            b = newtonArray[1],
+            c = newtonArray[2],
+            d = newtonArray[3],
+            eT = inputValues[0]?.value,
+            xn = inputValues[3]?.value
         
-        //Calcula a derivada f'(x)
-        Fdxn = 3 * +a * Math.pow(x0, 2) + 2 * +b * +x0 - +c;
-        xn = +x0 - (+Fxn / +Fdxn);
-        iT += 1;
-  
-      } while (Math.abs(+xn - x0) >= +eT || Math.abs(+Fxn) >= +eT)
-      
-      setElement(
-        <>
-          <Text>
-            x0 = {x0}
-          </Text>
-          <Text>
-            Iterações = {iT}
-          </Text>
-          <Text>
-            O resultado final é: {xn}
-          </Text>
-        </>
-      )
-    }
+        do {
+          x0 = xn;
+          // Calculando o f(x):
+          Fxn = a * Math.pow(+x0, 3) + (+b * Math.pow(+x0, 2) - +c * +x0 + +d);
+          
+          //Calcula a derivada f'(x)
+          Fdxn = 3 * +a * Math.pow(x0, 2) + 2 * +b * +x0 - +c;
+          xn = +x0 - (+Fxn / +Fdxn);
+          iT += 1;
+    
+        } while (Math.abs(+xn - x0) >= +eT || Math.abs(+Fxn) >= +eT)
+        
+        setElement(
+          <>
+            <Text>
+              x0 = {x0}
+            </Text>
+            <Text>
+              Iterações = {iT}
+            </Text>
+            <Text>
+              O resultado final é: {xn}
+            </Text>
+          </>
+        )
+      }
   }
 
   return (

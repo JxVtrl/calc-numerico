@@ -82,7 +82,8 @@ export function AppProvider({ children }) {
         inputValues,
         setInputValues,
         setNewtonValues,
-        newtonValues
+        newtonValues,
+        resetValues
     }
 
     return (

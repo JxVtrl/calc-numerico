@@ -1,6 +1,6 @@
 import React from 'react'
 import { joao_img, marcelo_img } from '../../../images'
-import { Flex, Text, AvatarGroup, Avatar } from '@chakra-ui/react'
+import { Flex, Text, AvatarGroup, Avatar, Tooltip } from '@chakra-ui/react'
 import { useDevice } from '../../hooks'
 
 export function Header() {
@@ -53,14 +53,26 @@ export function Header() {
           w='fit-content'
           size="lg"
         >
-          <Avatar
-            name="João Vinicius Vitral"
-            src={joao_img}
-          />
-          <Avatar
-            name="Marcelo Bracet"
-            src={marcelo_img}
-          />
+          {/* <Tooltip label="João Vinicius Vitral" aria-label='A tooltip'> */}
+            <Avatar
+              name="João Vinicius Vitral"
+              src={joao_img}
+              cursor='pointer'
+              _hover={{
+                transform: 'scale(1.1)'
+              }}
+            />
+          {/* </Tooltip> */}
+          {/* <Tooltip label="Marcelo Bracet" aria-label='A tooltip'> */}
+            <Avatar
+              name="Marcelo Bracet"
+              src={marcelo_img}
+              cursor='pointer'
+              _hover={{
+                transform: 'scale(1.1)'
+              }}
+            />
+          {/* </Tooltip> */}
         </AvatarGroup>
       </Flex>
     </Flex>
