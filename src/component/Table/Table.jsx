@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Table as Tbl,
   Thead,
@@ -9,9 +9,12 @@ import {
   TableCaption,
   TableContainer,
   Input,
+  Flex
 } from "@chakra-ui/react";
+import { useApp } from '../../context/AppContext';
 
 export function Table({ values, setValues }) {  
+  const { userX, setUserX } = useApp()
   
   useEffect(() => {
     if(values)
@@ -41,36 +44,39 @@ export function Table({ values, setValues }) {
       <Tbl variant="simple">
         <TableCaption>Interpolação de Lagrange - Polinômio de Lagrange</TableCaption>
         <Thead>
-          <Tr>
-            <Th textAlign='center'>X</Th>
-            <Th textAlign='center'>Y</Th>
+          <Tr as={Flex} justifyContent='space-around'>
+            <Th>X</Th>
+            <Th>Y</Th>
           </Tr>
         </Thead>
-        <Tbody>
-          {values?.map((item, idx) => {
-            if (item.id === idx) {
-              return (
-                <Tr key={idx}>
-                  <Td>
-                    <Input
-                      textAlign='center'
-                      placeholder={"x" + item.id}
-                      value={values[item.id]?.x}
-                      onChange={(e) => handleChange(e.target.value, item.id, "x")}
-                    />
-                  </Td>
-                  <Td>
-                    <Input
-                      textAlign='center'
-                      placeholder={"y" + item.id}
-                      value={values[item.id]?.y}
-                      onChange={(e) => handleChange(e.target.value, item.id, "y")}
-                    />
-                  </Td>
-                </Tr>
-              )
-            }
-          })}
+        <Tbody as={Flex} flexDir='column'>
+          <Flex flexDir='column' >
+            {values?.map((item, idx) => {
+              if (item.id === idx) {
+                return (
+                  <Tr key={idx}>
+                    <Td>
+                      <Input
+                        textAlign='center'
+                        placeholder={"x" + item.id}
+                        value={values[item.id]?.x}
+                        onChange={(e) => handleChange(e.target.value, item.id, "x")}
+                      />
+                    </Td>
+                    <Td>
+                      <Input
+                        textAlign='center'
+                        placeholder={"y" + item.id}
+                        value={values[item.id]?.y}
+                        onChange={(e) => handleChange(e.target.value, item.id, "y")}
+                      />
+                    </Td>
+                  </Tr>
+                )
+              }
+            })}
+          </Flex>
+          <Input maxW='400px' m='15px auto 0' placeholder='Valor de x' onChange={e => setUserX(e.target.value)} value={userX} />
         </Tbody>
       </Tbl>
     </TableContainer>

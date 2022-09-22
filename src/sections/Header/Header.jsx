@@ -1,5 +1,5 @@
 import React from 'react'
-import { joao_img, marcelo_img } from '../../../public/images'
+import { joao_img, marcelo_img } from '../../images'
 import { Flex, Text, AvatarGroup, Avatar, Tooltip } from '@chakra-ui/react'
 import { useDevice } from '../../hooks'
 

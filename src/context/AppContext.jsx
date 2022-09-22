@@ -9,6 +9,8 @@ export function AppProvider({ children }) {
     const [funcObj, setFuncObj] = useState({})
     const [inputValues, setInputValues] = useState([])
     const [newtonValues, setNewtonValues] = useState([])
+  const [userX, setUserX] = useState('')
+
 
     useEffect(() => {
         if(funcType)
@@ -83,7 +85,9 @@ export function AppProvider({ children }) {
         setInputValues,
         setNewtonValues,
         newtonValues,
-        resetValues
+        resetValues,
+        setUserX,
+        userX
     }
 
     return (
