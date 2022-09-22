@@ -76,7 +76,7 @@ export function Table({ values, setValues }) {
               }
             })}
           </Flex>
-          <Input maxW='400px' m='15px auto 0' placeholder='Valor de x' onChange={e => setUserX(e.target.value)} value={userX} />
+          <Input maxW='200px' m='15px auto 0' placeholder='Valor de x' onChange={e => setUserX(e.target.value)} value={userX} />
         </Tbody>
       </Tbl>
     </TableContainer>
