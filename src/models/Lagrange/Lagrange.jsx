@@ -128,7 +128,7 @@ export const Lagrange = () => {
                     </Flex>
                     <Flex>
                         <Text mt='30px' align='center'>
-                            Aproximação da raiz: {valorFinal}
+                            Aproximação da raiz: {valorFinal.toFixed(5)}
                         </Text>
                     </Flex>
                 </>
