@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Image } from '@chakra-ui/react'
 import { Modal } from "./component";
-import { Header,  Footer, Main } from "./sections";
+import { Header,   Main } from "./sections";
 
 export default function App() {
   return (
@@ -21,7 +21,6 @@ export default function App() {
         justify='space-between'
       >
         <Main />
-        <Footer/>
       </Flex>
     </Flex>
   )

@@ -1,4 +1,4 @@
-import joao_img from './joao.jpeg'
-import marcelo_img from './marcelo.jpeg'
+import jv_img from './jv.jpeg'
+import jb_img from './jb.jpg'
 
-export { joao_img, marcelo_img }
+export { jv_img, jb_img }
